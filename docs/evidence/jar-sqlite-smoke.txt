@@ -1,0 +1,4 @@
+﻿Command: java -cp <temporary-classpath> JarSqliteSmoke <temporary-db>
+Exit code: 0
+PACKAGED_JAR_SQLITE_OK
+Result: PASS

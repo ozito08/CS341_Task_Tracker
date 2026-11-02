@@ -1,0 +1,72 @@
+         CS341 Task Tracker – A-to-Z Quality and Gap Audit
+                Project documentation | 1 November 2026 | Based on the five-page course brief
+
+
+
+
+1. What Was Reviewed
+
+Java source and MVC separation; task and account business rules; SQLite schema; tests and CI files; doc-
+umentation and use-case descriptions; English consistency; PlantUML diagram sources; LaTeX PDF ren-
+dering; GitHub and team submission evidence.
+
+
+2. Findings and Corrective Actions
+
+    ID        Finding                               Corrective action / current status
+
+    A01       Document language must be con-        All project-authored reports, guides, slides, diagrams and
+              sistent.                              interface labels are written in English.
+    A02       Reports were visually dense or        Plain A4 XeLaTeX with black text, white background,
+              decorative.                           conventional headings and restrained tables; simple
+                                                    Beamer slides.
+    A03       Diagram source/render       prove-    Seven canonical PlantUML sources were rendered to SVG
+              nance unclear.                        and PNG using PlantUML 1.2025.10; see the render logs
+                                                    and images.
+    A04       Software had test evidence gaps.      Maven clean verification passed all 17 JUnit/JDBC tests.
+                                                    A packaged-JAR SQLite round-trip and 10 independent
+                                                    Python SQLite checks also passed. GUI verification re-
+                                                    mains pending.
+    A05       Verification script could exit suc-   Now exits 2 when Maven is unavailable, except explicit
+              cessfully without Maven.              offline-only mode.
+    A06       No comprehensive authorization        Guarded SQL edit/toggle/delete and reassignment tests
+              tests at repository level.            ran successfully as part of the 17-test JUnit suite.
+    A07       Security hash metadata bound-         Added length checks for PBKDF2 salt/digest in verify
+              aries not verified.                   path.
+    A08       UI and team contribution evidence     Unresolved: require real GUI acceptance evidence and au-
+              absent.                               thentic GitHub/team histories.
+    A09       Assignment requested external         Limited Todoist/Trello and anecdotal feedback analysis
+              product comparisons.                  retained in English with sources and limitations.
+    A10       Need reproducible PDF editing.        Six editable English XeLaTeX masters plus shared style
+                                                    and matching compiled PDFs.
+
+
+
+
+3. Non-Negotiable Final Validation Gates
+
+1. Java/JDBC/JUnit: local gate passed with mvn -B clean verify; retain the true console log and
+   Surefire reports.
+2. Desktop UI: demonstrate AT-01–AT-08 with the real application and SQLite driver; save screenshots or
+   a recording as evidence.
+
+                                                       1
+3. PlantUML/PDF: seven PlantUML sources were rendered and the PDF set rebuilt; perform a human
+   visual review of all pages and GUI acceptance before submission.
+4. GitHub: publish the actual repository, verify CI status, and preserve meaningful individual commits
+   from 3–4 real students.
+5. Presentation: all team members participate and can explain their contributions and technical decisions.
+
+
+4. Evidence Interpretation
+
+Passing JUnit/JDBC and packaged-JAR SQLite tests establishes the tested application paths only. It does
+not establish graphical usability, teamwork authenticity, remote GitHub CI, or submission completion. The
+release remains partially verified until the GUI, extraction/build packaging, and real team/remote require-
+ments are completed.
+
+
+
+
+                                                    2
+

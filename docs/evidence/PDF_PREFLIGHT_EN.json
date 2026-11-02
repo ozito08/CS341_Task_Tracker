@@ -1,0 +1,36 @@
+{
+  "build_date": "2026-11-01",
+  "pdfs": [
+    {
+      "name": "Project_Report_EN.pdf",
+      "pages": 6,
+      "sha256": "9c640477e6d6cc6c212bbc3d3e0a5d4b0d706b3669c0d60b513d2044f7198cef"
+    },
+    {
+      "name": "Test_Report_EN.pdf",
+      "pages": 2,
+      "sha256": "99c401cacb3b9bb3ad4c089edb18e6b9ec665f67ad1ef60e45a0746e19dbdb7c"
+    },
+    {
+      "name": "User_Guide_EN.pdf",
+      "pages": 2,
+      "sha256": "a559cc1c9dcf45af4b510ee4c7e14673c3da25c183f411eb1b73ac6319b519a2"
+    },
+    {
+      "name": "UML_Diagrams_EN.pdf",
+      "pages": 8,
+      "sha256": "405bd7d9ea85fc63ea1660064178f90c84158282e5c4016354d5453c9a60209d"
+    },
+    {
+      "name": "Presentation_EN.pdf",
+      "pages": 16,
+      "sha256": "c166e417fca82aab6d3ea954f53f442e2fe28ba10de9310830515b0989f8aca6"
+    },
+    {
+      "name": "Gap_Audit_EN.pdf",
+      "pages": 2,
+      "sha256": "ea40d4c37c65d2ae6fcd914169a3b61c386019948eea0f99170ac3ac0a36977e"
+    }
+  ],
+  "notes": "PDFs rebuilt from version-neutral English XeLaTeX sources. Existing Java/Maven test evidence was retained unchanged."
+}

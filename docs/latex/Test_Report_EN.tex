@@ -1,0 +1,49 @@
+\documentclass[11pt,a4paper]{article}
+\input{style.tex}
+\begin{document}
+\reporttitle{CS341 Task Tracker -- Test Report}{CS341 Project | Evidence-aware verification | 1 November 2026}
+\section{Test Strategy}
+Tests are divided into three evidence classes: (1) executable offline checks that do not require JDBC libraries, (2) JUnit 5 integration tests using the Java SQLite JDBC driver, and (3) manual Swing desktop acceptance tests. Results are not aggregated into a single pass count because these classes test different components.
+
+\section{Automated Test Inventory}
+\small
+\begin{longtable}{p{18mm}p{87mm}p{39mm}}
+\toprule Group & Cases & Execution evidence \\ \midrule\endfirsthead
+\toprule Group & Cases & Execution evidence \\ \midrule\endhead
+Java & Maven compiles application code with \texttt{--release 11}. & PASS\\
+JUnit/JDBC & Registration/login; task creation and assignment; creator/assignee restrictions; completion toggling; persistence; SQL literal safety; date/title bounds; direct guarded SQL mutation; reassignment and invalid input. & 17 PASS; 0 fail/error/skip\\
+Packaged JAR & Load SQLite JDBC from the shaded JAR and create/insert/read a temporary database. & PASS\\
+Python SQL & Schema init/idempotency; foreign keys and index; unique usernames; role selection; priority; guarded updates; reopen persistence. & 10/10 PASS; independent SQLite\\
+PlantUML & Render seven canonical diagrams to SVG and PNG. & 7/7 PASS\\
+GUI & Registration, login, task CRUD, filters, sorting, role denial, restart persistence. & Manual run pending\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section{Acceptance Scenario Matrix}
+\small
+\begin{longtable}{p{16mm}p{96mm}p{30mm}}
+\toprule ID & Procedure / Expected result & Observed status \\ \midrule\endfirsthead
+\toprule ID & Procedure / Expected result & Observed status \\ \midrule\endhead
+AT-01 & Register Alice; log out; log in with correct credentials. & Manual test pending\\
+AT-02 & Alice assigns a task to Bob. Task appears for creator and assignee. & Manual test pending\\
+AT-03 & Carol cannot view Alice-to-Bob task. & Manual test pending\\
+AT-04 & Bob completes and reopens the task; changes persist. & Manual test pending\\
+AT-05 & Bob cannot edit or delete Alice's task. & Manual test pending\\
+AT-06 & Alice edits, reassigns, and deletes her task. & Manual test pending\\
+AT-07 & Restart with the same \texttt{tasks.db}; data remains. & Manual test pending\\
+AT-08 & Use priority, due date, filter and sorting features. & Manual test pending\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section{Executed and Missing Evidence}
+The successful command was \texttt{mvn -B clean verify}. The environment was Windows 11 with JDK 22.0.1 and Maven 3.9.9; the Maven compiler targets Java 11. The run executed all 17 JUnit methods: 0 failures, 0 errors and 0 skipped. The console log is \texttt{docs/evidence/maven-clean-verify.log}; Surefire XML and TXT reports are in \texttt{target/surefire-reports/}.
+
+The first clean verification passed all tests but failed once during JAR assembly. The diagnostic package retry and the subsequent clean verification succeeded; the initial log is retained and not presented as a passing run. A separate smoke program confirmed that the packaged JAR can load SQLite JDBC and perform a database round trip. The independent Python check passed 10/10, but it does not replace JDBC/JUnit evidence.
+
+All seven PlantUML sources were rendered using PlantUML 1.2025.10. XeLaTeX build logs and PDF text/page preflight are stored under \texttt{docs/evidence/latex/}. A real interactive Swing GUI run, screenshots, GitHub Actions run and team presentation have \textbf{not} been performed.
+
+\section{Completion Gate}
+Before submission, run AT-01--AT-08 in a graphical desktop session, record genuine GUI evidence, and provide authentic GitHub CI and student contribution evidence. The verified release ZIP does not satisfy these remaining human/remote requirements.
+\end{document}

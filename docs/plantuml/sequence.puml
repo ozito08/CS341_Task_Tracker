@@ -1,0 +1,29 @@
+@startuml
+skinparam monochrome true
+actor "Task assignee" as Actor
+participant MainFrame
+participant TaskTrackerController as Controller
+participant TaskService as Service
+participant TaskRepository as Repo
+database "SQLite" as DB
+Actor -> MainFrame: Select task / Toggle complete
+MainFrame -> Controller: toggle(taskId)
+Controller -> Service: toggle(currentUser, taskId)
+Service -> Repo: findById(taskId)
+Repo -> DB: SELECT ... WHERE id=?
+DB --> Repo: Task row
+Repo --> Service: TaskItem
+alt Creator or assignee
+ Service -> Repo: toggleCompleted(taskId, userId)
+ Repo -> DB: UPDATE ... WHERE id=?\nAND (creator_id=? OR assignee_id=?)
+ DB --> Repo: affected row count
+ Repo --> Service: 1 / 0
+ Service --> Controller: success / exception
+ Controller --> MainFrame: return
+ MainFrame -> Controller: tasks() for refresh
+else Not authorized
+ Service --> Controller: SecurityException
+ Controller --> MainFrame: SecurityException
+ MainFrame --> Actor: Error message
+end
+@enduml

@@ -1,0 +1,5 @@
+﻿Windows local verification: PASS
+Maven: mvn -B clean verify (exit 0)
+Surefire: 17 tests, 0 failures, 0 errors, 0 skipped
+Packaged JAR SQLite JDBC round trip: PASS
+Python SQLite check: executed; see python-sqlite-check.log

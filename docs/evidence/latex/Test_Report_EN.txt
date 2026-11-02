@@ -1,0 +1,80 @@
+                           CS341 Task Tracker – Test Report
+                           CS341 Project | Evidence-aware verification | 1 November 2026
+
+
+
+
+1. Test Strategy
+
+Tests are divided into three evidence classes: (1) executable offline checks that do not require JDBC libraries,
+(2) JUnit 5 integration tests using the Java SQLite JDBC driver, and (3) manual Swing desktop acceptance
+tests. Results are not aggregated into a single pass count because these classes test different components.
+
+
+2. Automated Test Inventory
+
+
+   Group           Cases                                                            Execution evidence
+
+   Java            Maven compiles application code with --release 11.               PASS
+   JUnit/JDBC      Registration/login; task creation and assignment; cre-           17 PASS; 0 fail/error/skip
+                   ator/assignee restrictions; completion toggling; persistence;
+                   SQL literal safety; date/title bounds; direct guarded SQL
+                   mutation; reassignment and invalid input.
+   Packaged        Load SQLite JDBC from the shaded JAR and cre-                    PASS
+   JAR             ate/insert/read a temporary database.
+   Python SQL      Schema init/idempotency; foreign keys and index; unique          10/10 PASS; independent
+                   usernames; role selection; priority; guarded updates; reopen     SQLite
+                   persistence.
+   PlantUML        Render seven canonical diagrams to SVG and PNG.                  7/7 PASS
+   GUI             Registration, login, task CRUD, filters, sorting, role denial,   Manual run pending
+                   restart persistence.
+
+
+
+
+3. Acceptance Scenario Matrix
+
+
+    ID            Procedure / Expected result                                              Observed status
+
+    AT-01         Register Alice; log out; log in with correct credentials.                Manual test pending
+    AT-02         Alice assigns a task to Bob. Task appears for creator and assignee.      Manual test pending
+    AT-03         Carol cannot view Alice-to-Bob task.                                     Manual test pending
+    AT-04         Bob completes and reopens the task; changes persist.                     Manual test pending
+    AT-05         Bob cannot edit or delete Alice’s task.                                  Manual test pending
+    AT-06         Alice edits, reassigns, and deletes her task.                            Manual test pending
+    AT-07         Restart with the same tasks.db; data remains.                            Manual test pending
+    AT-08         Use priority, due date, filter and sorting features.                     Manual test pending
+
+
+
+
+                                                            1
+4. Executed and Missing Evidence
+
+The successful command was mvn -B clean verify. The environment was Windows 11 with JDK 22.0.1
+and Maven 3.9.9; the Maven compiler targets Java 11. The run executed all 17 JUnit methods: 0 failures,
+0 errors and 0 skipped. The console log is docs/evidence/maven-clean-verify.log; Surefire XML
+and TXT reports are in target/surefire-reports/.
+The first clean verification passed all tests but failed once during JAR assembly. The diagnostic package
+retry and the subsequent clean verification succeeded; the initial log is retained and not presented as a passing
+run. A separate smoke program confirmed that the packaged JAR can load SQLite JDBC and perform
+a database round trip. The independent Python check passed 10/10, but it does not replace JDBC/JUnit
+evidence.
+All seven PlantUML sources were rendered using PlantUML 1.2025.10. XeLaTeX build logs and PDF
+text/page preflight are stored under docs/evidence/latex/. A real interactive Swing GUI run, screen-
+shots, GitHub Actions run and team presentation have not been performed.
+
+
+5. Completion Gate
+
+Before submission, run AT-01–AT-08 in a graphical desktop session, record genuine GUI evidence, and
+provide authentic GitHub CI and student contribution evidence. The verified release ZIP does not satisfy
+these remaining human/remote requirements.
+
+
+
+
+                                                       2
+

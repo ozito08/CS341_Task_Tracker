@@ -1,0 +1,91 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+left to right direction
+package "Model" {
+ class User {
+    - id: long
+    - username: String
+    - passwordHash: String
+  }
+ class TaskItem {
+    - id: long
+    - creatorId: long
+    - assigneeId: long
+    - title: String
+    - description: String
+    - completed: boolean
+    - priority: String
+    - dueDate: String
+  }
+}
+package "View" {
+ class MainFrame {
+    - taskTable: JTable
+    - screens: CardLayout
+  }
+  }
+package "Controller" {
+ class TaskTrackerController {
+    - signedIn: User
+    + register()
+    + login()
+    + logout()
+    + create()
+    + edit()
+    + toggle()
+    + delete()
+  }
+  }
+package "Service" {
+ class AuthService {
+    + register()
+    + login()
+  }
+ class TaskService {
+    + list()
+    + create()
+    + edit()
+    + toggle()
+    + delete()
+  }
+ class PasswordHasher {
+    + hash()
+    + verify()
+  }
+  }
+package "Repository" {
+ class UserRepository {
+    + findById()
+    + findByUsername()
+    + insert()
+  }
+ class TaskRepository {
+    + visibleTo()
+    + insert()
+    + edit()
+    + toggleCompleted()
+    + delete()
+  }
+  }
+package "Persistence" {
+ class Database {
+    + connect(): Connection
+    + initialize()
+  }
+  }
+MainFrame --> TaskTrackerController
+TaskTrackerController --> AuthService
+TaskTrackerController --> TaskService
+TaskTrackerController --> UserRepository
+AuthService --> PasswordHasher
+AuthService --> UserRepository
+TaskService --> UserRepository
+TaskService --> TaskRepository
+TaskRepository --> Database
+UserRepository --> Database
+TaskService ..> TaskItem
+TaskTrackerController ..> User
+User "1" <-- "0..*" TaskItem : creator / assignee
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+skinparam monochrome true
+actor "Visitor" as Guest
+actor "Signed-in user" as Member
+actor "Task creator" as Creator
+actor "Task assignee" as Assignee
+Member <|-- Creator
+Member <|-- Assignee
+rectangle "CS341 Task Tracker" {
+ usecase "Register" as A
+ usecase "Log in" as B
+ usecase "Log out" as C
+ usecase "View / filter tasks" as D
+ usecase "Create / assign task" as E
+ usecase "Edit task" as F
+ usecase "Delete task" as G
+ usecase "Complete / reopen" as H
+}
+Guest --> A
+Guest --> B
+Member --> C
+Member --> D
+Member --> E
+Creator --> F
+Creator --> G
+Creator --> H
+Assignee --> H
+@enduml

@@ -1,0 +1,1 @@
+digraph G {graph[rankdir=TB,pad=".2"];node[shape=box,fontname="DejaVu Sans",fontsize=10];edge[color=black];pc[label="Local desktop computer"];jvm[label="Java 11+ JVM"];jar[label="Task Tracker JAR / Swing"];db[label="tasks.db / SQLite",shape=cylinder];pc->jvm->jar->db[label="JDBC"];}

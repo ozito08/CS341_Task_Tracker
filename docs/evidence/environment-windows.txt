@@ -1,0 +1,12 @@
+﻿Date: 2026-11-01 12:54:49 +03:00
+OS: Microsoft Windows 10.0.26300 
+JAVA_HOME: C:\Program Files\Java\jdk-22
+java version "22.0.1" 2024-04-16
+Java(TM) SE Runtime Environment (build 22.0.1+8-16)
+Java HotSpot(TM) 64-Bit Server VM (build 22.0.1+8-16, mixed mode, sharing)
+javac 22.0.1
+Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)
+Maven home: C:\Tools\apache-maven-3.9.9
+Java version: 22.0.1, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-22
+Default locale: en_US, platform encoding: UTF-8
+OS name: "windows 11", version: "10.0", arch: "amd64", family: "windows"

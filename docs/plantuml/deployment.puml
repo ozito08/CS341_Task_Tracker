@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+node "One desktop computer\nWindows / Linux / macOS" {
+ node "Java 11+ Runtime" {
+  artifact "Task Tracker executable JAR" as JAR
+ }
+ database "tasks.db\nLocal SQLite file" as DB
+ JAR --> DB : SQLite JDBC
+}
+note bottom of JAR
+Online connection is not needed at runtime.
+Initial Maven dependency download needs access.
+end note
+@enduml

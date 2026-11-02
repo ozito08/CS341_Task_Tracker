@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+start
+:Log in or register;
+:Show created or assigned tasks;
+if (Create task?) then (yes)
+ :Enter title, assignee, priority, optional due date;
+ if (Valid inputs?) then (yes)
+  :Persist new task in SQLite;
+ else (no)
+  :Display validation error;
+ endif
+else (no)
+ :Select task;
+ if (Task creator?) then (yes)
+  :Edit, delete, or toggle status;
+ else (no)
+  if (Task assignee?) then (yes)
+   :Toggle completion status;
+  else (no)
+   :Deny unauthorized operation;
+  endif
+ endif
+endif
+:Refresh visible task list;
+stop
+@enduml

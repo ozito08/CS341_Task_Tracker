@@ -1,0 +1,38 @@
+CS341 Task Tracker - Local Build Evidence
+Date: 2026-11-01
+OS: Windows 11 x64
+Java runtime/compiler: JDK 22.0.1 (Oracle)
+Maven: Apache Maven 3.9.9
+Compiler target: Java 11 (--release 11)
+SQLite JDBC: org.xerial:sqlite-jdbc:3.54.1.0
+JUnit Jupiter: 5.13.4
+
+Command:
+  mvn -B clean verify
+
+Final result:
+  PASS; exit code 0
+  17 tests run, 0 failures, 0 errors, 0 skipped
+  See docs/evidence/maven-clean-verify.log and target/surefire-reports/.
+
+An initial run passed all 17 tests but failed once during JAR assembly. The failure did not recur: mvn -B -e -DskipTests package passed, followed by a successful clean verification. The first and diagnostic logs are retained in docs/evidence/.
+
+Packaged-JAR SQLite smoke:
+  PASS; a temporary Java program loaded org.sqlite.JDBC from target/task-tracker-1.0.0.jar and performed a create/insert/read round trip.
+  See docs/evidence/jar-sqlite-smoke.txt.
+
+Independent SQLite engine:
+  PASS; 10/10 Python sqlite3 checks.
+  This is supplementary evidence and not a substitute for JDBC/JUnit.
+
+PlantUML:
+  PASS; PlantUML 1.2025.10 rendered all seven source files to SVG and PNG.
+  See docs/evidence/plantuml-svg.log and docs/evidence/plantuml-png.log.
+
+Release archive:
+  PASS; ZIP entries and data streams checked; the extracted package passed mvn -B clean verify.
+  See dist/CS341_Task_Tracker_FINAL.zip and docs/evidence/release-zip-verification.txt.
+  The SHA-256 sidecar is dist/SHA256_MANIFEST.txt.
+
+Manual GUI acceptance, GitHub Actions, team contributions and class presentation:
+  NOT RUN / NOT VERIFIED. Do not infer completion from this local evidence.

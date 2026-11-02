@@ -1,0 +1,60 @@
+                         CS341 Task Tracker – User Guide
+                               English | CS341 Project | Java desktop application
+
+
+
+
+1. Requirements
+
+Install Java JDK 11 or newer and Maven 3.8 or newer. Use a normal graphical desktop on Windows, macOS
+or Linux. The first Maven build downloads dependencies; the application itself uses a local SQLite file and
+requires no database server.
+
+
+2. Build and Launch
+
+From the project directory:
+
+mvn -B clean verify
+java -jar target/task-tracker-1.0.0.jar
+
+For Windows PowerShell, use target\task-tracker-1.0.0.jar. The database is created as tasks.db
+in the working directory. A custom path is supported with -Dtasktracker.db=/path/to/tasks.db
+before -jar.
+
+
+3. Accounts and Tasks
+
+1. Select Create account, choose a username of 3–30 ASCII letters/digits/underscores and a password of
+   at least 8 characters.
+2. Sign in. Use New task to enter title, description, registered assignee, optional priority and deadline in
+   YYYY-MM-DD format.
+3. Select a task to edit it, mark it complete/reopen it, or delete it. The creator can edit/delete; both creator
+   and assignee can change completion.
+4. Use Filter (All, Open, Completed, High priority) or click table headers to sort the tasks.
+5. Log out and sign in as another account to simulate collaboration within the same local database.
+
+
+4. Common Problems
+
+ Problem                                Resolution
+
+ Maven not found                        Install Maven and verify mvn -version.
+ SQLite driver missing                  Build the Maven-shaded executable JAR rather than launching raw
+                                        class files.
+ No application window                  Use a non-headless graphical desktop.
+ Edit or delete denied                  These actions require the creator account.
+ Invalid date                           Enter a real calendar date in YYYY-MM-DD format.
+
+                                                       1
+5. Data and Security
+
+The application does not implement automatic backups or encrypted storage. Back up tasks.db manually
+after closing the application, and protect the local file with operating-system permissions. Passwords are
+not stored as plaintext.
+
+
+
+
+                                                    2
+

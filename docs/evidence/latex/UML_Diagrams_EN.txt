@@ -1,0 +1,109 @@
+            CS341 Task Tracker – UML and Data Diagrams
+                  English | CS341 Project | Canonical editable sources: docs/plantuml/*.puml
+
+
+
+
+1. Diagram Source and Status
+
+All seven authoritative diagram definitions are provided as PlantUML .puml files. Each was rendered with
+PlantUML 1.2025.10 to both SVG and PNG under docs/diagrams/. The figures below use these genuine
+PlantUML PNG renders; the SVG files are also retained for scalable viewing.
+
+
+
+
+                                                      1
+2. Use-case Diagram
+
+The local application distinguishes visitors, signed-in users, task creators and task assignees. Editing and
+deletion are restricted to task creators.
+
+
+
+
+                           Figure 1: PlantUML render; source: use_case.puml.
+
+
+
+
+                                                     2
+3. Class Diagram
+
+View, controller, services, repositories, models and database initialization have separate responsibilities.
+
+
+
+
+                              Figure 2: PlantUML render; source: class.puml.
+
+
+
+
+                                                      3
+4. Entity Relationship Diagram
+
+Both task creator and assignee are foreign keys to the user table.
+
+
+
+
+                               Figure 3: PlantUML render; source: er.puml.
+
+
+
+
+                                                      4
+5. Component Diagram
+
+The Swing UI delegates through the controller and services to repositories and the local SQLite database.
+
+
+
+
+                         Figure 4: PlantUML render; source: component.puml.
+
+
+
+
+                                                    5
+6. Sequence Diagram
+
+Completing a task verifies permission and uses a conditional SQL update.
+
+
+
+
+                          Figure 5: PlantUML render; source: sequence.puml.
+
+
+
+
+                                                   6
+7. Activity Diagram
+
+A logged-in user creates, modifies or toggles a task; operations refresh the visible task list.
+
+
+
+
+                             Figure 6: PlantUML render; source: activity.puml.
+
+
+
+
+                                                       7
+8. Deployment Diagram
+
+The packaged JAR and local SQLite file reside on one desktop machine, without a required database server.
+
+
+
+
+                         Figure 7: PlantUML render; source: deployment.puml.
+
+
+
+
+                                                   8
+

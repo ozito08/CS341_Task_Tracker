@@ -1,0 +1,6 @@
+﻿PlantUML: PASS - 7 sources rendered as SVG and PNG.
+XeLaTeX: PASS - all six PDFs built twice and text-extracted.
+PDF page counts and sizes: docs/evidence/PDF_PREFLIGHT_EN.json
+.gitignore required generated/private-file patterns: PASS
+PDF page contact sheets: generated for all pages; human visual inspection is still required.
+Manual Swing GUI acceptance: NOT RUN by this script.

@@ -1,0 +1,26 @@
+@startuml
+skinparam monochrome true
+skinparam linetype ortho
+hide circle
+entity "users" as U {
+ id : INTEGER <<PK, AUTOINCREMENT, NOT NULL>>
+ --
+ username : TEXT <<UNIQUE, NOCASE, NOT NULL>>
+ password_hash : TEXT <<NOT NULL>>
+ created_at : TEXT <<NOT NULL, DEFAULT CURRENT_TIMESTAMP>>
+}
+entity "tasks" as T {
+ id : INTEGER <<PK, AUTOINCREMENT, NOT NULL>>
+ --
+ creator_id : INTEGER <<FK users.id, NOT NULL>>
+ assignee_id : INTEGER <<FK users.id, NOT NULL>>
+ title : TEXT <<NOT NULL>>
+ description : TEXT <<NOT NULL, DEFAULT ''>>
+ completed : INTEGER <<NOT NULL, DEFAULT 0, CHECK 0/1>>
+ priority : TEXT <<NOT NULL, DEFAULT MEDIUM, CHECK LOW/MEDIUM/HIGH>>
+ due_date : TEXT <<NULL, ISO-8601>>
+ created_at : TEXT <<NOT NULL, DEFAULT CURRENT_TIMESTAMP>>
+}
+U ||--o{ T : creates
+U ||--o{ T : is assigned
+@enduml

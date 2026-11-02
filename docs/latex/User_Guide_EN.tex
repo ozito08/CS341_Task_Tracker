@@ -1,0 +1,34 @@
+\documentclass[11pt,a4paper]{article}
+\input{style.tex}
+\begin{document}
+\reporttitle{CS341 Task Tracker -- User Guide}{English | CS341 Project | Java desktop application}
+\section{Requirements}
+Install Java JDK 11 or newer and Maven 3.8 or newer. Use a normal graphical desktop on Windows, macOS or Linux. The first Maven build downloads dependencies; the application itself uses a local SQLite file and requires no database server.
+\section{Build and Launch}
+From the project directory:
+\begin{verbatim}
+mvn -B clean verify
+java -jar target/task-tracker-1.0.0.jar
+\end{verbatim}
+For Windows PowerShell, use \texttt{target\textbackslash task-tracker-1.0.0.jar}. The database is created as \texttt{tasks.db} in the working directory. A custom path is supported with \texttt{-Dtasktracker.db=/path/to/tasks.db} before \texttt{-jar}.
+\section{Accounts and Tasks}
+\begin{enumerate}
+\item Select \textbf{Create account}, choose a username of 3--30 ASCII letters/digits/underscores and a password of at least 8 characters.
+\item Sign in. Use \textbf{New task} to enter title, description, registered assignee, optional priority and deadline in YYYY-MM-DD format.
+\item Select a task to edit it, mark it complete/reopen it, or delete it. The creator can edit/delete; both creator and assignee can change completion.
+\item Use \textbf{Filter} (All, Open, Completed, High priority) or click table headers to sort the tasks.
+\item Log out and sign in as another account to simulate collaboration within the same local database.
+\end{enumerate}
+\section{Common Problems}
+\begin{tabularx}{\linewidth}{p{53mm}X}
+\toprule Problem & Resolution \\ \midrule
+Maven not found & Install Maven and verify \texttt{mvn -version}.\\
+SQLite driver missing & Build the Maven-shaded executable JAR rather than launching raw class files.\\
+No application window & Use a non-headless graphical desktop.\\
+Edit or delete denied & These actions require the creator account.\\
+Invalid date & Enter a real calendar date in YYYY-MM-DD format.\\
+\bottomrule
+\end{tabularx}
+\section{Data and Security}
+The application does not implement automatic backups or encrypted storage. Back up \texttt{tasks.db} manually after closing the application, and protect the local file with operating-system permissions. Passwords are not stored as plaintext.
+\end{document}

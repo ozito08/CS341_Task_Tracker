@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+skinparam componentStyle rectangle
+left to right direction
+package "Local Java desktop application" {
+ [MainFrame / Swing UI] --> [TaskTrackerController]
+ [TaskTrackerController] --> [AuthService]
+ [TaskTrackerController] --> [TaskService]
+ [AuthService] --> [PasswordHasher]
+ [AuthService] --> [UserRepository]
+ [TaskService] --> [UserRepository]
+ [TaskService] --> [TaskRepository]
+ [UserRepository] --> [Database / JDBC]
+ [TaskRepository] --> [Database / JDBC]
+}
+database "tasks.db / SQLite" as DB
+[Database / JDBC] --> DB
+@enduml

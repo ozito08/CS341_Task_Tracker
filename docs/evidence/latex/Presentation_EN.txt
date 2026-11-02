@@ -1,0 +1,195 @@
+CS341 Software Engineering: Task Tracker
+   Project 1 — Plain English Project Presentation
+
+
+
+
+                 1 November 2026
+
+
+
+
+                                                    1 / 16
+Problem and Scope
+
+
+
+
+    • Small teams need to assign and track tasks.
+    • Single-machine Java desktop application.
+    • Multiple accounts use one local SQLite file.
+    • No real-time online synchronization.
+
+
+
+
+                                                     2 / 16
+Assignment Requirements
+
+
+
+
+    • Register, log in and log out.
+    • Create, assign, edit, delete and complete tasks.
+    • View created or assigned tasks.
+    • Persist data with SQLite through JDBC.
+    • Use Git, JUnit 5 and documented system design.
+
+
+
+
+                                                         3 / 16
+Additional Features
+
+
+
+
+    • Three priority levels: LOW, MEDIUM, HIGH.
+    • Optional due dates in YYYY-MM-DD format.
+    • Open / completed / high-priority filters.
+    • Sorting by task table columns.
+
+
+
+
+                                                  4 / 16
+Use Cases
+
+
+
+
+            5 / 16
+Architecture
+
+
+
+
+     • Swing View: MainFrame.
+     • Controller: TaskTrackerController.
+     • Business rules: AuthService and TaskService.
+     • Storage access: repositories and Database.
+
+
+
+
+                                                      6 / 16
+Class Diagram
+
+
+
+
+                7 / 16
+SQLite Data Model
+
+
+
+
+                    8 / 16
+Authorization
+
+
+
+
+     • Creator: view, edit, delete and toggle completion.
+     • Assignee: view and toggle completion.
+     • Unrelated user: no access.
+     • SQL writes have user-ID conditions as a second guard.
+
+
+
+
+                                                               9 / 16
+Task Completion Sequence
+
+
+
+
+                           10 / 16
+Implementation Details
+
+
+
+
+    • Java 11+, Swing, JDBC and SQLite.
+    • Parameterized SQL and database foreign keys.
+    • Salted PBKDF2 password hashes.
+    • Automatic creation of users and tasks tables.
+
+
+
+
+                                                      11 / 16
+Automated Tests
+
+
+
+
+    • Maven/Surefire: 17 JUnit 5 tests passed; 0 failures, errors or skips.
+    • Packaged JAR SQLite JDBC create/insert/read smoke test passed.
+    • Independent Python SQLite checks: 10/10 passed.
+    • Final ZIP extracted and passed a clean Maven build.
+
+
+
+
+                                                                              12 / 16
+Manual Demo Script
+
+
+
+
+   1. Register Alice and Bob.
+   2. Alice assigns a task to Bob.
+   3. Bob completes the task but cannot edit/delete.
+   4. Alice changes priority, reassigns or deletes the task.
+   5. Restart: verify persistence and task filters.
+
+
+
+
+                                                               13 / 16
+Design Trade-offs
+
+
+
+
+    • Local database: low setup cost, offline use.
+    • No multi-device collaboration or backup automation.
+    • Permission policy is a stated design choice.
+    • Lean MVC-oriented packages for small-coursework scope.
+
+
+
+
+                                                               14 / 16
+Open Verification Gates
+
+
+
+
+    • Run AT-01–AT-08 on a real desktop and capture genuine GUI evidence.
+    • Provide authentic 3–4 member contributions and Git history.
+    • Publish only with team approval and record the real remote CI result.
+    • Deliver the live demo with all actual team members.
+
+
+
+
+                                                                              15 / 16
+Conclusion
+
+
+
+
+    • Local Maven/JUnit/JDBC, packaged-JAR SQLite and extracted ZIP builds
+      passed.
+    • Seven PlantUML sources were rendered; six English PDFs were rebuilt.
+    • GUI acceptance and real team/GitHub submission remain open.
+
+                                  Questions?
+
+
+
+
+                                                                             16 / 16
+

@@ -1,0 +1,23 @@
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+
+kpathsea: Running mktextfm Arial
+/usr/share/texlive/texmf-dist/web2c/mktexnam: Could not map source abbreviation A for Arial.
+/usr/share/texlive/texmf-dist/web2c/mktexnam: Need to update /usr/share/texlive/texmf-dist/fonts/map/fontname/special.map?
+mktextfm: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1; ; nonstopmode; input Arial
+This is METAFONT, Version 2.71828182 (TeX Live 2025/dev/Debian) (preloaded base=mf)
+
+kpathsea: Running mktexmf Arial
+
+! I can't find file `Arial'.
+<*> ...=ljfour; mag:=1; ; nonstopmode; input Arial
+                                                  
+Please type another input file name
+! Emergency stop.
+<*> ...=ljfour; mag:=1; ; nonstopmode; input Arial
+                                                  
+Transcript written on mfput.log.
+grep: Arial.log: No such file or directory
+mktextfm: `mf-nowin -progname=mf \mode:=ljfour; mag:=1; ; nonstopmode; input Arial' failed to make Arial.tfm.
+kpathsea: Appending font creation commands to missfont.log.

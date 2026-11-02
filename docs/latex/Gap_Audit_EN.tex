@@ -1,0 +1,36 @@
+\documentclass[11pt,a4paper]{article}
+\input{style.tex}
+\begin{document}
+\reporttitle{CS341 Task Tracker -- A-to-Z Quality and Gap Audit}{Project documentation | 1 November 2026 | Based on the five-page course brief}
+\section{What Was Reviewed}
+Java source and MVC separation; task and account business rules; SQLite schema; tests and CI files; documentation and use-case descriptions; English consistency; PlantUML diagram sources; LaTeX PDF rendering; GitHub and team submission evidence.
+
+\section{Findings and Corrective Actions}
+\small
+\begin{longtable}{p{12mm}p{48mm}p{81mm}}
+\toprule ID & Finding & Corrective action / current status \\ \midrule\endfirsthead
+\toprule ID & Finding & Corrective action / current status \\ \midrule\endhead
+A01 & Document language must be consistent. & All project-authored reports, guides, slides, diagrams and interface labels are written in English.\\
+A02 & Reports were visually dense or decorative. & Plain A4 XeLaTeX with black text, white background, conventional headings and restrained tables; simple Beamer slides.\\
+A03 & Diagram source/render provenance unclear. & Seven canonical PlantUML sources were rendered to SVG and PNG using PlantUML 1.2025.10; see the render logs and images.\\
+A04 & Software had test evidence gaps. & Maven clean verification passed all 17 JUnit/JDBC tests. A packaged-JAR SQLite round-trip and 10 independent Python SQLite checks also passed. GUI verification remains pending.\\
+A05 & Verification script could exit successfully without Maven. & Now exits 2 when Maven is unavailable, except explicit offline-only mode.\\
+A06 & No comprehensive authorization tests at repository level. & Guarded SQL edit/toggle/delete and reassignment tests ran successfully as part of the 17-test JUnit suite.\\
+A07 & Security hash metadata boundaries not verified. & Added length checks for PBKDF2 salt/digest in verify path.\\
+A08 & UI and team contribution evidence absent. & Unresolved: require real GUI acceptance evidence and authentic GitHub/team histories.\\
+A09 & Assignment requested external product comparisons. & Limited Todoist/Trello and anecdotal feedback analysis retained in English with sources and limitations.\\
+A10 & Need reproducible PDF editing. & Six editable English XeLaTeX masters plus shared style and matching compiled PDFs.\\
+\bottomrule
+\end{longtable}
+\normalsize
+\section{Non-Negotiable Final Validation Gates}
+\begin{enumerate}
+\item \textbf{Java/JDBC/JUnit:} local gate passed with \texttt{mvn -B clean verify}; retain the true console log and Surefire reports.
+\item \textbf{Desktop UI:} demonstrate AT-01--AT-08 with the real application and SQLite driver; save screenshots or a recording as evidence.
+\item \textbf{PlantUML/PDF:} seven PlantUML sources were rendered and the PDF set rebuilt; perform a human visual review of all pages and GUI acceptance before submission.
+\item \textbf{GitHub:} publish the actual repository, verify CI status, and preserve meaningful individual commits from 3--4 real students.
+\item \textbf{Presentation:} all team members participate and can explain their contributions and technical decisions.
+\end{enumerate}
+\section{Evidence Interpretation}
+Passing JUnit/JDBC and packaged-JAR SQLite tests establishes the tested application paths only. It does not establish graphical usability, teamwork authenticity, remote GitHub CI, or submission completion. The release remains partially verified until the GUI, extraction/build packaging, and real team/remote requirements are completed.
+\end{document}
