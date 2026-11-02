@@ -1,0 +1,21 @@
+PRAGMA foreign_keys=ON;
+CREATE TABLE IF NOT EXISTS users (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ username TEXT NOT NULL COLLATE NOCASE UNIQUE,
+ password_hash TEXT NOT NULL,
+ created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS tasks (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ creator_id INTEGER NOT NULL REFERENCES users(id),
+ assignee_id INTEGER NOT NULL REFERENCES users(id),
+ title TEXT NOT NULL,
+ description TEXT NOT NULL DEFAULT '',
+ completed INTEGER NOT NULL DEFAULT 0 CHECK(completed IN (0,1)),
+ priority TEXT NOT NULL DEFAULT 'MEDIUM' CHECK(priority IN ('LOW','MEDIUM','HIGH')),
+ due_date TEXT,
+ created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS ix_tasks_creator ON tasks(creator_id);
+CREATE INDEX IF NOT EXISTS ix_tasks_assignee ON tasks(assignee_id);
+CREATE INDEX IF NOT EXISTS ix_tasks_due ON tasks(due_date);
